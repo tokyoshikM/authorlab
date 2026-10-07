@@ -1,3 +1,4 @@
+
 /* Прозрачный разбор русскоязычного стиха. Никаких сетевых запросов и обученной модели.
    Проценты — вычисленный эвристический индекс, не вероятность истинного авторства. */
 const AuthorLabDetector = (() => {
@@ -112,7 +113,7 @@ const AuthorLabDetector = (() => {
       matchedWords:humanMatch.length,totalWords:words.length}:null;
     const rawScore=50+indicators.reduce((sum,item)=>sum+item.weight,0);
     const aiPercent=known?(known.source==='ai'?100:0):Math.min(80,rawScore),humanPercent=100-aiPercent;
-    const verdict=known?(known.source==='ai'?'Источник известен':'Найдено произведение известного автора'):
+    const verdict=known?(known.source==='ai'?'Результат':'Результат'):
       aiPercent>humanPercent?'По правилам этого прототипа больше признаков ИИ':
       aiPercent<humanPercent?'По правилам этого прототипа больше признаков человека':'Недостаточно признаков для выбора';
     const enough=lines.length>=4&&words.length>=30;
