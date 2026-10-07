@@ -22,3 +22,27 @@
 .verdict-bar{height:16px;border-radius:9px;background:#dce4d8;overflow:hidden}
 .verdict-bar span{display:block;height:100%;background:#596f5b;border-radius:9px}
 .verdict-row.human .verdict-bar span{background:#b19065}
+
+.detector-input-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.detector-examples {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.detector-examples button {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--light);
+  color: var(--green);
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 600;
+}
