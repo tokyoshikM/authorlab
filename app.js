@@ -136,8 +136,27 @@ function research() {
 }
 function detector() {
   show(`<div class="detector-intro"><p class="eyebrow">ИНСТРУМЕНТ ДЛЯ АНАЛИЗА ПОЭЗИИ</p><h1>Детектор<br><em>и разбор стиха.</em></h1></div>
-    <form id="detector-form" class="card detector-form"><label for="detector-text">Стихотворение (от 2 до 80 строк)</label><textarea id="detector-text" rows="11" maxlength="10000" required placeholder="Вставьте стихотворение целиком…"></textarea><p class="muted small">Можно отметить ударения знаком после гласной: доро́га. Без разметки приложение покажет число слогов, но не будет уверенно называть размер. Текст обрабатывается на вашем устройстве и никуда не отправляется.</p><button class="button" type="submit">Разобрать стих →</button><p id="detector-error" role="alert" class="error" hidden></p></form><div id="detector-report" aria-live="polite"></div>`);
-  document.querySelector('#detector-form').onsubmit=e=>{
+    <form id="detector-form" class="card detector-form"><div class="detector-input-header">
+  <label for="detector-text">Стихотворение (от 2 до 80 строк)</label>
+  <div class="detector-examples">
+    <button id="example-human" type="button">Пример автора</button>
+    <button id="example-ai" type="button">Пример ИИ</button>
+  </div>
+  
+</div><textarea id="detector-text" rows="11" maxlength="10000" required placeholder="Вставьте стихотворение целиком…"></textarea><p class="muted small">Можно отметить ударения знаком после гласной: доро́га. Без разметки приложение покажет число слогов, но не будет уверенно называть размер. Текст обрабатывается на вашем устройстве и никуда не отправляется.</p><button class="button" type="submit">Разобрать стих →</button><p id="detector-error" role="alert" class="error" hidden></p></form><div id="detector-report" aria-live="polite"></div>`);
+   const insertExample = text => {
+  document.querySelector('#detector-text').value = text;
+  document.querySelector('#detector-error').hidden = true;
+  document.querySelector('#detector-report').innerHTML = '';
+};
+
+document.querySelector('#example-human').onclick = () =>
+  insertExample(AuthorLabClassics.find(p => p.id === 'P1').text);
+
+document.querySelector('#example-ai').onclick = () =>
+  insertExample(D.poems.find(p => p.id === 'A1').text);
+   
+   document.querySelector('#detector-form').onsubmit=e=>{
     e.preventDefault();const textValue=document.querySelector('#detector-text').value;
     const error=document.querySelector('#detector-error');error.hidden=true;
     try{
