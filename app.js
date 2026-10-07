@@ -154,7 +154,7 @@ document.querySelector('#example-human').onclick = () =>
   insertExample(AuthorLabClassics.find(p => p.id === 'P1').text);
 
 document.querySelector('#example-ai').onclick = () =>
-  insertExample(D.poems.find(p => p.id === 'A1').text);
+  insertExample('Мечта наполнится светом поутру\nМечта наполнится светом опять\nМечта наполнится светом на ветру\nМечта наполнится светом и станет сиять\nДуша моя встретит новый день\nДуша моя снова увидит рассвет\nДуша моя сбросит печали тень\nДуша моя снова найдёт этот свет\nСердце наполнится светом любви\nСердце услышит надежды слова\nСердце прошепчет: мечтай и живи\nСердце поверит в мечту навсегда\nНовый день придёт, новый свет придёт\nНовая мечта за собой позовёт\nНовый день придёт, новый путь расцветёт\nИ свет моей души никогда не уйдёт');
    
    document.querySelector('#detector-form').onsubmit=e=>{
     e.preventDefault();const textValue=document.querySelector('#detector-text').value;
