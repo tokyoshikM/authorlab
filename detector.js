@@ -112,7 +112,7 @@ const AuthorLabDetector = (() => {
       matchedWords:humanMatch.length,totalWords:words.length}:null;
     const rawScore=50+indicators.reduce((sum,item)=>sum+item.weight,0);
     const aiPercent=known?(known.source==='ai'?100:0):Math.min(80,rawScore),humanPercent=100-aiPercent;
-    const verdict=known?(known.source==='ai'?'Источник известен: текст из корпуса ИИ':'Найдено произведение известного автора'):
+    const verdict=known?(known.source==='ai'?'Источник известен':'Найдено произведение известного автора'):
       aiPercent>humanPercent?'По правилам этого прототипа больше признаков ИИ':
       aiPercent<humanPercent?'По правилам этого прототипа больше признаков человека':'Недостаточно признаков для выбора';
     const enough=lines.length>=4&&words.length>=30;
@@ -122,7 +122,7 @@ const AuthorLabDetector = (() => {
       knownSource:known?{id:known.id,source:known.source||'human',author:known.author||null,title:known.title||null,url:known.url||null}:null,
       quotedSource,
       assessment:!enough?'Текста недостаточно для оценки признаков':indicators.length>=2?'Есть несколько признаков, требующих проверки':indicators.length===1?'Найден один неоднозначный признак':'По заданным правилам выраженных признаков не найдено',
-      note:known?'Введённый текст совпал с произведением или отрывком из локальной базы. 100 % означает установленный источник этих строк, а не способность определять авторство любого текста.':
+      note:known?'':
         'Проценты — точный результат этой формулы, но не измеренная вероятность реального авторства. На коротком тексте ошибка особенно вероятна.'};
   }
   return {analyze,countSyllables};
