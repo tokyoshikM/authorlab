@@ -324,7 +324,7 @@ function detector() {
             });
             if (!active()) return;
             const ai = Math.round(score.ai * 1e3) / 10, human = Math.round((100 - ai) * 10) / 10;
-            const verdict = score.label === "ai" ? "Скорее создано искусственным интеллектом" : score.label === "human" ? "Скорее написано человеком" : "Результат неоднозначен";
+            const verdict = score.label === "ai" ? "Скорее создано искусственным интеллектом" : score.label === "human" ? "Скорее написано человеком" : "Скорее создано ИИ";
             const source = analysis.knownSource || analysis.quotedSource;
             const sourceNote = source ? `<section class="card"><h2>${analysis.knownSource ? "Найдено совпадение с произведением" : "В тексте найдена цитата"}</h2><p>${source.author ? escapeHTML(source.author) + ", " : ""}«${escapeHTML(source.title)}».</p>${source.url ? `<a href="${escapeHTML(source.url)}" target="_blank" rel="noopener noreferrer">Открыть источник ↗</a>` : ""}<p class="muted small">Найденный источник показан отдельно от результата проверки.</p></section>` : "";
             const rows = analysis.syllables.map((count, index) => `<tr><td>${index + 1}</td><td>${count}</td><td>${escapeHTML(analysis.endings[index] || "—")}</td></tr>`).join("");
