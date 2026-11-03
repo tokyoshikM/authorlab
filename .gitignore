@@ -1,0 +1,8 @@
+.DS_Store
+Thumbs.db
+node_modules/
+*-backup.json
+AL-*.json
+authorlab-AL-*.json
+authorlab-*.csv
+METHOD.
